@@ -1,0 +1,49 @@
+/* ==========================================================
+   03-layout.css
+   Structure: container, sticky header, menu, footer, cursor, progress bar.
+   ========================================================== */
+main,header,footer{position:relative;z-index:2}
+.wrap{width:min(1240px,92%);margin:auto}
+
+/* ---- Header (built by js/ui.js). z-index 30 keeps it above the 3D dots ---- */
+header{position:sticky;top:0;z-index:30}
+header::before{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{position:relative;z-index:2;font:800 1.45rem var(--fh);letter-spacing:.14em;text-transform:uppercase;color:var(--tx);text-decoration:none;line-height:1}
+.logo small{display:block;margin-top:.35rem;font:500 .58rem var(--ff);letter-spacing:.34em;color:var(--mut)}
+nav ul{display:flex;gap:2.2rem;list-style:none;padding:0;align-items:center}
+nav a{color:var(--tx);text-decoration:none;font:500 .82rem var(--ff);letter-spacing:.12em;text-transform:uppercase;padding:.4rem 0;border-bottom:1px solid transparent}
+nav a i{font-style:normal;color:var(--ac);margin-right:.5rem;font-weight:700}   /* the 01 02 03 numbers */
+nav a:hover,nav a.on{border-color:var(--ac)}
+.tools{display:flex;gap:.4rem}
+.ib{display:grid;place-items:center;width:42px;height:42px;background:none;border:1px solid var(--bd);color:var(--tx);border-radius:50%;cursor:pointer;transition:background .25s,border-color .25s}
+.ib:hover{border-color:var(--ac);color:var(--ac)}
+.ib .ico{width:19px;height:19px}
+#burger{display:none;position:relative;z-index:2}
+body.menu-open{overflow:hidden}
+body.menu-open #hotspots,body.menu-open .scroll-hint,body.menu-open .home-cta{visibility:hidden}
+
+/* ---- Footer: dark navy, big wordmark ---- */
+footer{background:#0b1630;color:#fff;margin-top:6rem;padding:5rem 0 1.5rem;overflow:hidden}
+.foot-cta{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:end;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.18)}
+.foot-cta h2{font-size:clamp(2rem,5vw,4rem);text-transform:uppercase;letter-spacing:-.03em;max-width:12ch;color:#fff}
+.foot-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding:3rem 0}
+footer h3{font:600 .72rem var(--ff);letter-spacing:.22em;text-transform:uppercase;color:#8da2d0;margin-bottom:1rem}
+footer ul{list-style:none;padding:0;display:grid;gap:.5rem}
+footer a{color:#fff;text-decoration:none}footer a:hover{color:#9db8ff}
+footer li,footer p{color:#c3cde3}
+footer .li{display:flex;gap:.7rem;align-items:flex-start}
+.mark{font:800 clamp(3.5rem,17vw,15rem)/.8 var(--fh);letter-spacing:.02em;color:rgba(255,255,255,.07);text-transform:uppercase;margin:1rem 0 1.5rem;white-space:nowrap}
+.disc{font-size:.82rem;color:#9fb0d3;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem}
+footer .btn{background:#fff;color:#0b1630}footer .btn:hover{background:#9db8ff}
+body[data-page=contact] .foot-cta{display:none}   /* the form IS the call to action here */
+
+/* ---- Progress bar + custom cursor (effects.js) ---- */
+#progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:40;transform-origin:0 50%;transform:scaleX(0);background:var(--ac);pointer-events:none}
+#cursor{position:fixed;left:-16px;top:-16px;width:32px;height:32px;border:1.5px solid var(--ac);border-radius:50%;z-index:90;pointer-events:none;opacity:0;
+  transition:opacity .3s,width .25s,height .25s,margin .25s,background .25s}
+#cursor.on{opacity:.85}
+#cursor.hot{width:52px;height:52px;margin:-10px 0 0 -10px;background:color-mix(in srgb,var(--ac) 12%,transparent)}
+
+.logo{display:inline-block}.logo-mark{position:absolute;left:0;top:50%;transform:translateY(-58%);width:34px;height:34px;border-radius:50%}.logo{padding-left:2.7rem}

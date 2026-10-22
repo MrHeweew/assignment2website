@@ -1,0 +1,16 @@
+/* ==========================================================
+   02-base.css
+   Reset + defaults for plain HTML elements.
+   ========================================================== */
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:1rem/1.65 var(--ff);background:var(--bg-grad) fixed;color:var(--tx);transition:background .4s,color .4s;-webkit-font-smoothing:antialiased}
+a{color:var(--ac)}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--fh);line-height:1.05;letter-spacing:-.02em;font-weight:800}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+/* Icons: every icon on the site is an inline SVG that takes the text colour */
+.ico{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em;flex:none}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:.5rem;z-index:99}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}

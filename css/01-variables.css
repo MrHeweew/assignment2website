@@ -1,0 +1,27 @@
+/* ==========================================================
+   01-variables.css
+   Colours and fonts in ONE place. Palette: WHITE, BLUE, GREY.
+   Light theme = default. Dark theme = the toggle button.
+   ========================================================== */
+:root{
+  --bg:#ffffff;            /* page */
+  --bg2:#f3f5f9;          /* light grey panels */
+  --bg-grad:#ffffff;      /* page backdrop (flat white: editorial, no gradients) */
+  --card:#ffffff;
+  --tx:#0b1630;           /* ink: very dark navy */
+  --mut:#566177;          /* grey text */
+  --ac:#1f4fd8;           /* the one accent: blue */
+  --bd:#d7dde8;           /* hairline dividers */
+  --sh:0 1px 0 rgba(11,22,48,.04);
+  --btn1:#0b1630;         /* button background */
+  --btn2:#1f4fd8;         /* button hover background */
+  --btn-tx:#ffffff;       /* button text */
+  --glow:rgba(31,79,216,.10);   /* faint blue light behind the 3D balance */
+  --ff:'Inter',system-ui,sans-serif;          /* body */
+  --fh:'Archivo','Inter',system-ui,sans-serif; /* headlines */
+}
+[data-theme=dark]{
+  --bg:#070e1f;--bg2:#0d1730;--bg-grad:#070e1f;--card:#0d1730;
+  --tx:#eef2fa;--mut:#a3aec4;--ac:#7ea6ff;--bd:rgba(160,180,220,.2);
+  --btn1:#eef2fa;--btn2:#7ea6ff;--btn-tx:#070e1f;--glow:rgba(90,140,255,.2);
+}

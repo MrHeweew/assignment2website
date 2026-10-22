@@ -1,0 +1,49 @@
+abdallah Law Firm - 3D website
+HOW TO RUN: open folder in VS Code > install "Live Server" > right-click index.html > Open with Live Server (internet needed).
+
+3D MODEL
+models/balance_scale.glb = "Balance Scale" by Jean-Francois Bonin, CC BY 4.0 (credit is in the footer). It is 15 MB, so the first load takes a moment.
+To swap models: drop a .glb in models/ and change modelPath in js/config.js.
+If a dot is not on the right part, edit its x / y in js/config.js.
+
+SOUND
+No audio files: everything is synthesised in js/sound.js (ambient pad + hover/click/whoosh/success/error effects).
+Browsers need a click first, so the loading screen asks "Enter with sound" or "Enter silently". The speaker button in the menu toggles it.
+
+COLOURS
+White / blue / grey palette lives in css/01-variables.css (light theme default, dark theme via the half-moon button).
+
+FILE MAP
+css/01-variables  colours + fonts      css/04-components  buttons, cards, form...
+css/02-base       resets               css/05-scene       3D canvas, hotspots, loader
+css/03-layout     header/footer/grid   css/06-responsive  mobile rules + mobile menu
+css/07-sections    Fireart-style blocks (pills, tiles, ticker, tabs, CTA panel)
+js/config.js  settings + hotspot positions   js/scene.js  3D world + scroll camera
+js/sound.js ambient + sfx    js/hotspots.js clickable dots   js/nav.js page changes without reload (keeps music playing)                js/ui.js     nav, theme, reveal, slider
+js/tabs.js filter tabs   js/articles.js loads data/articles.json      js/form.js   contact form checks
+
+NOTES
+- The balance is the navigator: big on Home, and in the top 'slot' of every other page. Dots stick to the real parts of the model
+  (found by name in the .glb), so no manual x/y tuning is needed.
+- Music keeps playing between pages because js/nav.js swaps page content with AJAX instead of reloading. Use Live Server.
+- Music keeps playing between pages in BOTH modes: Live Server (pages fetched with AJAX) and double-click (pages come from js/pages.js).
+  If you edit a page and want double-click mode to show it, run:  node build-pages.js   (Live Server always shows your latest edits.)
+
+UPGRADES (inspired by threejs.org showcase sites)
+- Home: 3D intro first (nothing but the balance), then scroll for the brief's content: hero photo, tagline, counters, services overview,
+  client reviews, map. The 3D fades out when the content arrives.
+- Expertise: one section per practice area. Images: images/*.webp are generated PLACEHOLDERS: replace with Unsplash/Pexels photos (WebP).
+- js/effects.js: scroll progress bar, custom cursor, magnetic buttons, word-by-word headings, 'Next page' links.
+- The balance leans toward the dot you hover; a blue curtain wipes between pages; the loader shows a live % counter.
+
+EDITORIAL REDESIGN (style reference: ario.law)
+- Numbered sections, huge uppercase headlines, hairline dividers, list rows instead of cards, flat white/blue/grey, no gradients, no emoji.
+- Every icon is an inline SVG (js/config.js holds the drawings: SITE.icon('name')). The sound button swaps sound-on / sound-off icons.
+- images/*.webp are generated courthouse-style ILLUSTRATIONS used as placeholders. Replace them with real royalty-free photos
+  (keep the file names, or edit the <img> tags). Good search terms on Unsplash/Pexels: "courthouse columns", "law library", "marble steps",
+  "scales of justice", "lawyer portrait". Export as WebP, about 1600px wide for wide images.
+
+SERVICES + PROCESS SECTIONS (inspired by santalarch.com)
+- Home: 02 Services (names list, the picture swaps and the text opens; images/svc-1..9.webp are generated stand-ins). The Process section now lives only on the Expertise page.
+- Expertise page: the Process section at the bottom.
+- css/08-services-process.css = styling, js/sections.js = behaviour. Edit the stage texts in index.html / expertise.html (then run: node build-pages.js).
